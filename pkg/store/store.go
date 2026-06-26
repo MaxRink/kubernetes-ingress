@@ -62,7 +62,7 @@ type K8s struct {
 	// a separator that cannot appear in a host or a path.
 	RoutesProcessedByMapFile     map[string]map[string]RouteOwner
 	GatewayClasses               map[string]*GatewayClass
-	HaProxyPods                  map[string]struct{}
+	HaProxyPods                  map[string]string
 	BackendsWithNoConfigSnippets map[string]struct{}
 	FrontendRC                   *rc.ResourceCounter
 	GatewayControllerName        string
@@ -120,7 +120,7 @@ func NewK8sStore(args utils.OSArgs) K8s {
 		BackendsWithNoConfigSnippets: map[string]struct{}{},
 		CRStates:                     map[CRRef]*CRState{},
 		SectionsFromCR:               map[string]CRRef{},
-		HaProxyPods:                  map[string]struct{}{},
+		HaProxyPods:                  map[string]string{},
 		FrontendRC:                   rc.NewResourceCounter(),
 		IngressesByService:           map[string]*utils.OrderedSet[string, *Ingress]{},
 	}

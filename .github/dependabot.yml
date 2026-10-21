@@ -1,0 +1,43 @@
+version: 2
+updates:
+  - package-ecosystem: docker
+    directories:
+    - /deploy/tests/images/http-echo
+    - /deploy/tests/images/proxy-protocol
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      routine-updates:
+        patterns:
+        - '*'
+        update-types:
+        - minor
+        - patch
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      routine-updates:
+        patterns:
+        - '*'
+        update-types:
+        - minor
+        - patch
+  - package-ecosystem: gomod
+    directories:
+    - /
+    - /deploy/tests/images/http-echo
+    - /deploy/tests/images/proxy-protocol
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      routine-updates:
+        patterns:
+        - '*'
+        update-types:
+        - minor
+        - patch
